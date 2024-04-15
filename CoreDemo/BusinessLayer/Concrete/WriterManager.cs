@@ -1,0 +1,54 @@
+﻿using BusinessLayer.Absract;
+using DataAccessLayer.Abstact;
+using EntityLayer.Concrete;
+using Microsoft.Identity.Client;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLayer.Concrete
+{
+	public class WriterManager : IWriterServices
+	{
+		IWriterDal _writerDal;
+
+		public WriterManager(IWriterDal writerDal)
+		{
+			_writerDal = writerDal;
+		}
+
+        public List<Writer> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Writer> GetWriterByID(int id)
+        {
+            return _writerDal.GetListAll(x => x.WriterID == id);
+        }
+
+        public void TAdd(Writer t)
+        {
+            _writerDal.Insert(t);
+        }
+
+        public void TDelete(Writer t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Writer TGetByID(int id)
+        {
+            return _writerDal.GetByID(id);
+        }
+
+        public void TUpdate(Writer t)
+        {
+            _writerDal.Update(t);
+        }
+
+      
+	}
+}
